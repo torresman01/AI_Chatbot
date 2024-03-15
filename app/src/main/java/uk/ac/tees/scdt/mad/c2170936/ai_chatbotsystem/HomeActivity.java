@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 userPerformAction(userTyping.getText().toString());
+                userTyping.setText("");
             }
         });
     }
@@ -69,7 +70,19 @@ public class HomeActivity extends AppCompatActivity {
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            showResults.setText("Response is: " + response.toString());
+                            String trimAnswer = "";
+                            try {
+                                // Get the first element of the "choices" array
+                                JSONObject firstChoice = response.getJSONArray("choices").getJSONObject(0);
+                                // Extract the "message" object from the first choice
+                                JSONObject message = firstChoice.getJSONObject("message");
+                                // Extract the "content" string from the message object
+                                trimAnswer = message.getString("content");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                trimAnswer = "ERROR: Failed to extract answer content.";
+                            }
+                            showResults.setText(trimAnswer.trim()); // Use trim() to remove any leading or trailing whitespace
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -92,7 +105,7 @@ public class HomeActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     HashMap<String, String> headers = new HashMap<>();
                     headers.put("Content-Type", "application/json");
-                    headers.put("Authorization", "Bearer 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"); // Replace YOUR_API_KEY with your actual API key
+                    headers.put("Authorization", "Bearer "); // Replace YOUR_API_KEY with your actual API key
                     return headers;
                 }
             };
