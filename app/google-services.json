@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "497669677361",
+    "project_id": "aichatbot-f6157",
+    "storage_bucket": "aichatbot-f6157.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497669677361:android:46dcead0886d955fdb5010",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.scdt.mad.c2170936.ai_chatbotsystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZa06r601x2cRHpwSd18QLH6poRBP_Mxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
